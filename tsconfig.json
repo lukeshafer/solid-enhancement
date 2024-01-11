@@ -1,10 +1,12 @@
 {
+	"files": ["index.mjs"],
 	"compilerOptions": {
-		"lib": [ "DOM", "ES2020" ],
-		"noEmit": true,
+		"lib": ["DOM", "ES2020"],
 		"checkJs": true,
 		"allowJs": true,
 		"strict": true,
+		"declaration": true,
+		"emitDeclarationOnly": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noUncheckedIndexedAccess": true
