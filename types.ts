@@ -1,23 +1,25 @@
-type DefinitionOptions<Attributes extends Readonly<Array<string>>> = {
+export type DefinitionOptions<Attributes extends Readonly<Array<string>>> = {
 	name: string;
 	attributes: Attributes;
 };
 
-type ObservedAttributes = Readonly<Array<string>>;
-
-type AttributeStore<Attributes extends Readonly<Array<string>>> = Record<
+export type AttributeStore<Attributes extends Readonly<Array<string>>> = Record<
 	Attributes[number] | (string & {}),
 	string | null
 >;
 
-type DefinitionCallback<Attributes extends Readonly<Array<string>>> = (props: {
+export type DefinitionCallback<Attributes extends Readonly<Array<string>>> = (
+	props: DefinitionCallbackProps<Attributes>
+) => void;
+
+type DefinitionCallbackProps<Attributes extends Readonly<Array<string>>> = {
 	root: HTMLElement;
 	attributes: AttributeStore<Attributes>;
 	$: QueryFn;
 	$$: QueryAllFn;
-}) => void;
+};
 
-type QueryFn = <
+export type QueryFn = <
 	Q extends keyof HTMLElementTagNameMap,
 	V extends typeof HTMLElement | undefined = undefined,
 >(
@@ -25,7 +27,7 @@ type QueryFn = <
 	validator?: V
 ) => V extends typeof HTMLElement ? InstanceType<V> : HTMLElementTagNameMap[Q];
 
-type QueryAllFn = <
+export type QueryAllFn = <
 	Q extends keyof HTMLElementTagNameMap,
 	V extends typeof HTMLElement | undefined = undefined,
 >(

@@ -5,20 +5,20 @@ import { createStore } from 'solid-js/store';
 /**
  * @overload
  * @param {string} options
- * @param {DefinitionCallback<[]>} callback
+ * @param {import('./types').DefinitionCallback<[]>} callback
  * @returns void
  */
 /**
  * @template {Readonly<Array<string>>} [Attributes=[]]
  * @overload
- * @param {DefinitionOptions<Attributes>} options
- * @param {DefinitionCallback<Attributes>} callback
+ * @param {import('./types').DefinitionOptions<Attributes>} options
+ * @param {import('./types').DefinitionCallback<Attributes>} callback
  * @returns void
  */
 /**
  * @template {Readonly<Array<string>>} Attributes
- * @param {string | DefinitionOptions<Attributes>} options
- * @param {DefinitionCallback<Attributes>} callback
+ * @param {string | import('./types').DefinitionOptions<Attributes>} options
+ * @param {import('./types').DefinitionCallback<Attributes>} callback
  **/
 export function defineElement(options, callback) {
 	throwIfNotInBrowser();
@@ -28,14 +28,14 @@ export function defineElement(options, callback) {
 	customElements.define(
 		element_name,
 		class extends HTMLElement {
-			/** @type {import('solid-js/store').SetStoreFunction<AttributeStore<Attributes>> | null} */
+			/** @type {import('solid-js/store').SetStoreFunction<import('./types').AttributeStore<Attributes>> | null} */
 			__setAttributeStore = null;
 			connectedCallback() {
 				const root = this;
 
 				createRoot(() => {
 					const [attributesStore, setAttributesStore] = createStore(
-						/** @type {AttributeStore<Attributes>} */ ({})
+						/** @type {import('./types').AttributeStore<Attributes>} */ ({})
 					);
 					this.__setAttributeStore = setAttributesStore;
 					const attributes = new Proxy(attributesStore, {
@@ -70,18 +70,18 @@ export function defineElement(options, callback) {
 /**
  * @overload
  * @param {string} options
- * @returns {DefinitionOptions<[]>}
+ * @returns {import('./types').DefinitionOptions<[]>}
  **/
 /**
  * @template {Readonly<Array<string>>} [Attributes=[]]
  * @overload
- * @param {DefinitionOptions<Attributes>} options
- * @returns {DefinitionOptions<Attributes>}
+ * @param {import('./types').DefinitionOptions<Attributes>} options
+ * @returns {import('./types').DefinitionOptions<Attributes>}
  **/
 /**
  * @template {Readonly<Array<string>>} [Attributes=[]]
- * @param {string | DefinitionOptions<Attributes>} options
- * @returns {DefinitionOptions<Attributes>}
+ * @param {string | import('./types').DefinitionOptions<Attributes>} options
+ * @returns {import('./types').DefinitionOptions<Attributes>}
  **/
 function parseOptions(options) {
 	if (typeof options === 'string') {
@@ -107,7 +107,7 @@ function throwIfNotInBrowser() {
 function createSelectorFunctions(node) {
 	return { $, $$ };
 
-	/** @type {QueryFn} */
+	/** @type {import('./types').QueryFn} */
 	function $(selectors, validator) {
 		const value = node.querySelector(selectors);
 		if (!value) throw new Error('Invalid query');
@@ -118,7 +118,7 @@ function createSelectorFunctions(node) {
 		return value;
 	}
 
-	/** @type {QueryAllFn} */
+	/** @type {import('./types').QueryAllFn} */
 	function $$(selectors, validator) {
 		const list = node.querySelectorAll(selectors);
 
