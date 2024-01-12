@@ -28,7 +28,7 @@ export type QueryFn = <
 ) => V extends typeof HTMLElement ? InstanceType<V> : HTMLElementTagNameMap[Q];
 
 export type QueryAllFn = <
-	Q extends keyof HTMLElementTagNameMap,
+	Q extends keyof HTMLElementTagNameMap | ( string & {} ),
 	V extends typeof HTMLElement | undefined = undefined,
 >(
 	query: Q,
