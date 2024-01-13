@@ -1,14 +1,21 @@
 {
-	"files": ["index.mjs"],
-	"compilerOptions": {
-		"lib": ["DOM", "ES2020"],
-		"checkJs": true,
-		"allowJs": true,
-		"strict": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noUncheckedIndexedAccess": true
-	}
+  "files": [
+    "index.ts"
+  ],
+  "compilerOptions": {
+    "lib": [
+      "DOM",
+      "ES2020"
+    ],
+    "module": "Node16",
+    "target": "ES2020",
+    "checkJs": true,
+    "allowJs": true,
+    "strict": true,
+    "declaration": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true
+  }
 }

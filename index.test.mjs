@@ -1,7 +1,7 @@
-// @ts-nocheck
+// @ts-check
 import { test } from 'vitest';
 
-import { defineElement } from './index.mjs';
+import { defineElement } from './index.js';
 import { createEffect, createSignal } from 'solid-js';
 
 test('updates text', ({ expect }) => {

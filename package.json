@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "vitest",
-    "check": "tsc"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "Luke Shafer",
