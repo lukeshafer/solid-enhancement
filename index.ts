@@ -12,7 +12,7 @@ export function defineElement<Attributes extends readonly string[] = []>(
 ) {
 	throwIfNotInBrowser();
 
-  // @ts-expect-error
+	// @ts-expect-error
 	const { name: element_name, attributes: attribute_names } = parseOptions(options);
 
 	customElements.define(
@@ -45,7 +45,7 @@ export function defineElement<Attributes extends readonly string[] = []>(
 			}
 
 			attributeChangedCallback(name: Attributes[number], oldValue: string, newValue: string) {
-        // @ts-expect-error
+				// @ts-expect-error
 				if (oldValue !== newValue) this.__setAttributeStore?.(name, newValue);
 			}
 		}

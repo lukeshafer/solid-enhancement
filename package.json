@@ -2,11 +2,13 @@
   "name": "solid-enhancement",
   "version": "0.0.4",
   "description": "",
-  "main": "index.mjs",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "vitest",
-    "build": "tsc"
+    "dev": "tsc -w",
+    "build": "tsc",
+    "build-test": "tsc && vitest run"
   },
   "keywords": [],
   "author": "Luke Shafer",
